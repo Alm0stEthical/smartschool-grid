@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Smartschool Grid",
-  "version": "1.0.0",
+  "version": "1.1",
   "description": "Berekent automatisch je percentages per vak en totaalpercentage in de Smartschool puntenlijst",
   "host_permissions": ["*://*.smartschool.be/*"],
   "icons": {

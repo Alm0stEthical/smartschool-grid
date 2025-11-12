@@ -10,6 +10,29 @@ interface CourseStats {
 }
 
 function init() {
+  checkAndInject();
+
+  let lastUrl = window.location.href;
+  const urlObserver = new MutationObserver(() => {
+    const currentUrl = window.location.href;
+    if (currentUrl !== lastUrl) {
+      lastUrl = currentUrl;
+      checkAndInject();
+    }
+  });
+
+  if (document.body) {
+    urlObserver.observe(document.body, { childList: true, subtree: true });
+  } else {
+    setTimeout(() => {
+      if (document.body) {
+        urlObserver.observe(document.body, { childList: true, subtree: true });
+      }
+    }, 100);
+  }
+}
+
+function checkAndInject() {
   if (!window.location.href.includes("/results/main/table")) {
     return;
   }
